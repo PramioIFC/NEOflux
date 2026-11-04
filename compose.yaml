@@ -1,0 +1,12 @@
+services:
+  flux-server:
+    build:
+      context: ./server
+    ports:
+      - "9000:9000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:?Preencha NGROK_AUTHTOKEN no arquivo .env}
+      NGROK_DOMAIN: ${NGROK_DOMAIN:?Preencha NGROK_DOMAIN no arquivo .env}
+    restart: unless-stopped
+
